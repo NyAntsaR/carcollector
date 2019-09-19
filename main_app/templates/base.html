@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Car Collector</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <!---Nav-bar-->
+
+  <nav class="navbar-fixed">
+      <div class="nav-wrapper blue-grey lighten-3">
+          <ul>
+              <li><a href="/" class="left brand-logo">&nbsp;&nbsp;<img src="{% static 'images/icon.png' %}" alt="icon"></a></li>
+          </ul>
+
+          <ul class="right">
+              <li><a href="{% url 'about' %}">About</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'features_create' %}">Add a Feature</a></li>
+              <li><a href="{% url 'features_index' %}">View All Features</a></li>
+              <li><a href="{% url 'cars_create' %}">Add cars</a></li>
+              <li><a href="{% url 'index' %}">View All Cars</a></li>
+              <li><a href="{% url 'logout' %}">Log In</a></li>
+
+              {% else %}
+              <li><a href="{% url 'login' %}">Log In</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+              {% endif %}
+          </ul> 
+      </div>
+  </nav>
+
+  
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="page-footer blue-grey lighten-3">
+    <div class="center">All Rights Reserved, &copy; 2019 Car Collector &nbsp;</div>
+    <hr>
+  </footer>
+</body>
+</html>

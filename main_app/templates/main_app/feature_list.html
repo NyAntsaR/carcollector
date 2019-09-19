@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> Feature List </h1>
+
+{% for feature in feature_list %}
+<a href="{% url 'features_detail' feature.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span style="font-weight: bold"  class="card-title">{{ feature.name }}</span>
+            <p>Description: {{ feature.description }}</p>
+        </div>
+
+        <div class="card-action">
+            <a href="{% url 'features_update' feature.id %}">Edit</a>
+            <a href="{% url 'features_delete' feature.id %}">Delete</a>
+        </div>
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock %}

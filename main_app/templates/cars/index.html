@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Car List</h1>
+<hr>
+{% for car in cars %}
+<div class="row">
+  <div class="col s6"> 
+      <div class="card ">
+        <div class="card-content grey lighten-4">
+            <h4><span style="color: red" class="card-title">{{ car.make }}</span></h4>
+            <p> <span style="font-weight: bold; color: #546e7a">Model : </span> {{ car.model }}</p>
+            <p> <span style="font-weight: bold; color: #546e7a">Color : </span> {{ car.color }}</p>
+            <p> <span style="font-weight: bold; color: #546e7a">Year : </span> {{ car.year }}</p>
+            <a href="{% url 'detail' car.id %}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+      
+  </div>
+</div>
+
+<div>
+    <a href="{% url 'cars_update' car.id %}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>EDIT</a> 
+    <a href="{% url 'cars_delete' car.id %}" class="waves-effect waves-light red btn right"><i class="material-icons left">delete</i>DELETE</a>
+</div>
+<hr>
+
+{% endfor %}
+
+
+
+{% endblock %}
